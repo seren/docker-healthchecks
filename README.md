@@ -73,7 +73,7 @@ docker create \
   -e EMAIL_USE_TLS=<EMAIL_USE_TLS> \
   -e ALLOWED_HOSTS=<ALLOWED_HOSTS> \
   -p 8000:8000 \
-  -v <path to data>:/config \
+  -v <path to data on host>:/config \
   --restart unless-stopped \
   linuxserver/healthchecks
 ```
@@ -103,7 +103,7 @@ services:
       - EMAIL_USE_TLS=<EMAIL_USE_TLS>
       - ALLOWED_HOSTS=<ALLOWED_HOSTS>
     volumes:
-      - <path to data>:/config
+      - <path to data on host>:/config
     ports:
       - 8000:8000
     restart: unless-stopped
@@ -125,9 +125,9 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e EMAIL_PORT=<EMAIL_PORT>` | SMTP port |
 | `-e EMAIL_HOST_USER=<EMAIL_HOST_USER>` | SMTP user |
 | `-e EMAIL_HOST_PASSWORD=<EMAIL_HOST_PASSWORD>` | SMTP password |
-| `-e EMAIL_USE_TLS=<EMAIL_USE_TLS>` | Use TLS for SMTP |
-| `-e ALLOWED_HOSTS=<ALLOWED_HOSTS>` | array of valid hostnames for the server ["test.com","test2.com"] |
-| `-v /config` | database and healthchecks config |
+| `-e EMAIL_USE_TLS=<EMAIL_USE_TLS>` | Use TLS for SMTP (`True` or `False`) |
+| `-e ALLOWED_HOSTS=<ALLOWED_HOSTS>` | array of valid hostnames for the server `["test.com","test2.com"]` or `'*'` |
+| `-v <path to data on host>/config` | database and healthchecks config directory volume mapping |
 
 ## User / Group Identifiers
 
